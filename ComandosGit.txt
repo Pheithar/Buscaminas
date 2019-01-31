@@ -1,0 +1,5 @@
+Git Basic Commands
+
+Para acceder a todos los comandos disponibles de Git, simplemente escibid git en la barra de comandos de Unix
+
+git clone <url>       Copia un repositorio de GitHub en nuestra computadora local 
