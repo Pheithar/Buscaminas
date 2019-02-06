@@ -1,4 +1,8 @@
 //Normas de programación
+//ANTES DE EMPEZAR A TRABAJAR
+// git checkout dmgr2
+// git pull origin master
+// PARA SINCRONIZAR LOS AVANCES DE LOS COMPAÑEROS.
 
 1.  Todo el código se hará en inglés.
 2.  Se usará UN espacio entre las asignaciones y cualquier cosa. Ejemplo a = 2, b == c, etc...
