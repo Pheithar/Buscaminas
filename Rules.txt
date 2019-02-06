@@ -11,4 +11,4 @@
 7.  Las variables se declarán de las siguientes formas:
   7.1.  first_var
   7.2.  firstVar
-8.  adfkjasdf
+
