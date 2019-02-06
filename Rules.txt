@@ -1,6 +1,6 @@
 //Normas de programación
 //ANTES DE EMPEZAR A TRABAJAR
-// git checkout dmgr2
+// git checkout "tuBranch"   //sin comillas
 // git pull origin master
 // PARA SINCRONIZAR LOS AVANCES DE LOS COMPAÑEROS.
 
