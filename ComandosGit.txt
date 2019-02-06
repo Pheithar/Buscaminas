@@ -20,3 +20,4 @@ git checkout -b "name"                          Crea una nueva rama
 git checkout "name"                             Se mueve a otra rama
 git merge "name"                                Merge la rama "name" con la rama actual.
 git push --set-upstream origin "rama"           Define el 'padre' de la rama actual como "name"
+git pull origin master                          Recoge los últimos cambios de la master en la branch en que estés.
