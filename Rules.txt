@@ -15,4 +15,6 @@
 7.  Las variables se declarán de las siguientes formas:
   7.1.  first_var
   7.2.  firstVar
+8.  Las variables DEBEN tener nombres descriptivos.
+9.  Tiene que haber saltos de línea para separar en bloques.
 
