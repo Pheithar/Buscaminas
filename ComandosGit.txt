@@ -3,18 +3,21 @@ Git Basic Commands
 Para acceder a todos los comandos disponibles de Git, simplemente escibid git en la barra de comandos de Unix
 
 
-git init                Convierte la carpeta actual en un nuevo repositorio
-git clone <url>         Copia un repositorio de GitHub en nuestra computadora local
-git status              Aporta información útil sobre el repositorio. Entre otros, los archivos modificados
-gi add .                Añade todos los archivos que no estuvieran en el repositorio LOCAL.
-                        Requiere de un commit después(Solo hacerlo cuando se añaden archivos nuevos)
-git commit -a           Hace un commit de todo lo que ha sido modificado
-git commit -m "Msg"     Hace un commit, al que te permite añadir un mensaje(Se puede convinar con '-a')
-git log                 Muestra la historia de los commit del repositorio
-git push                Sube los archivos locales al repositorio de GitHub(Pide usuario y contraseña)
-git pull                Baja los archivos de GitHub a la máquina local
+git init                                        Convierte la carpeta actual en un nuevo repositorio
+git clone <url>                                 Copia un repositorio de GitHub en nuestra computadora local
+git status                                      Aporta información útil sobre el repositorio. Entre otros, los archivos modificados
+gi add .                                        Añade todos los archivos que no estuvieran en el repositorio LOCAL.
+                                                Requiere de un commit después(Solo hacerlo cuando se añaden archivos nuevos)
+git commit -a                                   Hace un commit de todo lo que ha sido modificado
+git commit -m "Msg"                             Hace un commit, al que te permite añadir un mensaje(Se puede convinar con '-a')
+git log                                         Muestra la historia de los commit del repositorio
+git push                                        Sube los archivos locales al repositorio de GitHub(Pide usuario y contraseña)
+git pull                                        Baja los archivos de GitHub a la máquina local
 
-git branch             Señala la rama en la que está trabajando
-git checkout -b "name" Crea una nueva rama
-git checkout "name"    Se mueve a otra rama
-git merge "name"       Merge la rama "name" con la rama actual.
+git branch                                      Señala la rama en la que está trabajando
+git branch -r                                   Muestra todas las ramas.
+git checkout -b "name"                          Crea una nueva rama
+git checkout "name"                             Se mueve a otra rama
+git merge "name"                                Merge la rama "name" con la rama actual.
+git push --set-upstream origin "rama"           Define el 'padre' de la rama actual como "name"
+git pull origin master                          Recoge los últimos cambios de la master en la branch en que estés.

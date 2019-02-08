@@ -1,0 +1,20 @@
+//Normas de programación
+//ANTES DE EMPEZAR A TRABAJAR
+// git checkout "tuBranch"   //sin comillas
+// git pull origin master
+// PARA SINCRONIZAR LOS AVANCES DE LOS COMPAÑEROS.
+
+1.  Todo el código se hará en inglés.
+2.  Se usará UN espacio entre las asignaciones y cualquier cosa. Ejemplo a = 2, b == c, etc...
+3.  Comentarios en español que sean claros.
+4.  Formato de cometarios:
+  4.1 Se usará una línea (o las necesarias) encima de cada bloque que resuma su funcionamiento.
+  4.2 Cada línea que necesite aclaración se hará al lado derecho.
+5.  Se usará identado para alinear el código. (Nada de espacios)
+6.  Las variables que tengan que ver con la configuración se cambian en una clase aparte o en un .txt. (esto se discutirá por el grupo).
+7.  Las variables se declarán de las siguientes formas:
+  7.1.  first_var
+  7.2.  firstVar
+8.  Las variables DEBEN tener nombres descriptivos.
+9.  Tiene que haber saltos de línea para separar en bloques.
+
