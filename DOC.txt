@@ -2,15 +2,21 @@
 
 CELL
 #atributes
-X
-Y
-Type
+cord_x  --Coordenadas de x(int)
+cord_y  --Coordenadas de y(int)
+type    --Cover, Uncover o Flag(String)
+value   -- Valor de la casilla una vez se da la vuelta
 
-Type
-#atributes
-open = [-1,0,1,2,3,4,5,6,7,8,9] #-1 significa que es una bomba
-cover
-Flag
+#methods
+
+change_type(click):
+  Si es del tipo cubierto, y si recibe boton derecho, se cambia a bandera, si
+  es botón izquierdo, se cambia a descubierto y aparece el valor
+  Si es bandera, y recibe boron derecho, cambia a cubierto, y si recibe
+  boton izquierdo, no hace nada
+  Si es descubierto, no hace nada de todas formas
+  Por parámetro debe recibir r_click para el botón derecho, y l_click para
+  el botón izquierdo
 
 BOARD
 #atributes
