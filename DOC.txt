@@ -5,7 +5,7 @@ CELL
 cord_x  --Coordenadas de x(int)
 cord_y  --Coordenadas de y(int)
 type    --Cover, Uncover o Flag(String)
-value   -- Valor de la casilla una vez se da la vuelta
+value   -- Valor de la casilla una vez se da la vuelta, de -1(bomba), a 8
 
 #methods
 
