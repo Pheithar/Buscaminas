@@ -9,6 +9,7 @@ class Cell():
     def __init__(self, cord_x, cord_y):
         self.cord_x = cord_x
         self.cord_y = cord_y
+        type = "Cover"
 
     #Si es del tipo cubierto, y si recibe boton derecho, se cambia a bandera, si
     #es botón izquierdo, se cambia a descubierto y aparece el valor
@@ -27,4 +28,3 @@ class Cell():
         elif type == "Flag":
             if click == "r_click":
                 type = "Cover"
-    

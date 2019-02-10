@@ -20,10 +20,10 @@ change_type(click):
 
 BOARD
 #atributes
-Cells [] --lista de celdas
-size_X --entero
-size_Y --entero
-bombs --se pone un número inicial de bombas al crear el tablero
+Cells []  --lista de celdas
+size_X    --entero
+size_Y    --entero
+bombs     --se pone un número inicial de bombas al crear el tablero
 
 #methods
 
