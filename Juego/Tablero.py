@@ -10,8 +10,8 @@ class Board:
 
     def create_board():
     #creamos el tablero inicial
-    i = 0
-    j = 0
-    for i in range(self.size_X):
-        for j in range(self.size_Y):
+    #i = 0
+    #j = 0
+    for i in range(0, self.size_X):
+        for j in range(0, self.size_Y):
             cells[i][j] = Cell(i,j)

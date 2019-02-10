@@ -5,5 +5,5 @@ i=0
 for i in longitud_texto:
     elemento = texto.split()
 
-    if elemento[0] = "0Cell":
+    if elemento[0] == "0Cell":
         print(elemento[1])
