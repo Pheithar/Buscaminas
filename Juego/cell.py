@@ -20,12 +20,11 @@ class Cell():
     def change_type(click):
         if type == "Cover":
             if click == "r_click":
-                type ==
+                type == "Flag"
             elif click == "l_click":
-                pass
+                type == "Uncover"
 
         elif type == "Flag":
             if click == "r_click":
-                pass
-            elif click == "l_click":
-                pass
+                type = "Cover"
+    
