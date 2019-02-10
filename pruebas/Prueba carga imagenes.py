@@ -1,9 +1,11 @@
 
-texto = open ("images.txt").readlines()
-longitud_texto = len(texto)
-i=0
-for i in longitud_texto:
-    elemento = texto.split()
+print(open("images.txt"))
 
-    if elemento[0] = "0Cell":
+texto = open("images.txt").readlines()
+longitud_texto = len(texto)
+
+for i in range(0, longitud_texto):
+    elemento = texto[0].split()
+
+    if elemento[0] == "0Cell":
         print(elemento[1])
