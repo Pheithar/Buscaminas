@@ -9,7 +9,7 @@ db2 = DataBase()
 #importar solo una clase from móduloName import ClassName as newName
 #Sirve para importar la clase cambiando el nombre
 from basedatos import DataBase as DB
-db2 = DataBase()
+db2 = DB()
 
 #importar solo varias clases from móduloName import ClassName, ClassName2
 from basedatos import DataBase, Tabla
