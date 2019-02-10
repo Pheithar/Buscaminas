@@ -21,4 +21,10 @@ change_type(click):
 BOARD
 #atributes
 Cells [] #lista
-size
+size_X
+size_Y
+bombs
+
+GAME
+#atributes
+Board
