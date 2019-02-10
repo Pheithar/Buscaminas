@@ -1,11 +1,9 @@
 
-print(open("images.txt"))
-
-texto = open("images.txt").readlines()
+texto = open("../Juego/images.txt", "r").readlines()
 longitud_texto = len(texto)
 
 for i in range(0, longitud_texto):
-    elemento = texto[0].split()
+    elemento = texto[i].split()
 
-    if elemento[0] == "0Cell":
+    if elemento[0] == "1Cell":
         print(elemento[1])
