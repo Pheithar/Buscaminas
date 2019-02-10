@@ -20,11 +20,17 @@ change_type(click):
 
 BOARD
 #atributes
-Cells [] #lista
-size_X
-size_Y
-bombs
+Cells [] --lista de celdas
+size_X --entero
+size_Y --entero
+bombs --se pone un número inicial de bombas al crear el tablero
+
+#methods
+
 
 GAME
 #atributes
 Board
+Screen_height
+Screen_width
+score
