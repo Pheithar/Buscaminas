@@ -1,14 +1,13 @@
-Para cambiar las imágenes, tan solo cambiar aquí
-IMPORTANTE NO DEJAR LÍNEAS EN BLANCO
--
--
-0Cell EmptyCell.png
-1Cell 1Cell.png
-2Cell 2Cell.png
-3Cell 3Cell.png
-4Cell 4Cell.png
-5Cell 5Cell.png
-6Cell 6Cell.png
-7Cell 7Cell.png
-8Cell 8Cell.png
-BombCell Bomb.png
+Para cambiar las imagenes, tan solo cambiar aqui
+IMPORTANTE NO DEJAR LINEAS EN BLANCO
+IMPORTANTE NO PONER TILDES
+0Cell media/EmptyCell.png
+1Cell media/1Cell.png
+2Cell media/2Cell.png
+3Cell media/3Cell.png
+4Cell media/4Cell.png
+5Cell media/5Cell.png
+6Cell media/6Cell.png
+7Cell media/7Cell.png
+8Cell media/8Cell.png
+BombCell media/Bomb.png
