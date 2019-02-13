@@ -10,6 +10,7 @@ gi add .                                        Añade todos los archivos que no
                                                 Requiere de un commit después(Solo hacerlo cuando se añaden archivos nuevos)
 git commit -a                                   Hace un commit de todo lo que ha sido modificado
 git commit -m "Msg"                             Hace un commit, al que te permite añadir un mensaje(Se puede convinar con '-a')
+
 git log                                         Muestra la historia de los commit del repositorio
 git push                                        Sube los archivos locales al repositorio de GitHub(Pide usuario y contraseña)
 git pull                                        Baja los archivos de GitHub a la máquina local
@@ -19,3 +20,9 @@ git checkout -b "name"                          Crea una nueva rama
 git checkout "name"                             Se mueve a otra rama
 git merge "name"                                Merge la rama "name" con la rama actual.
 git push --set-upstream origin "rama"           Define el 'padre' de la rama actual como "name"
+
+Cada vez que cree:
+(git add .) Solo si creo algo nuevo
+git commit -a -m "mensaje"
+git push
+
