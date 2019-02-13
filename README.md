@@ -1,2 +1,2 @@
 # Buscaminas
-juego de guays dek gruo con el nombre a discutir
+Se trata de una versión del Buscaminas con el objetivo de aprender a manejar Phyton3 y Pygame.
