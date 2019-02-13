@@ -21,7 +21,7 @@ git checkout "name"                             Se mueve a otra rama
 git merge "name"                                Merge la rama "name" con la rama actual.
 git push --set-upstream origin "rama"           Define el 'padre' de la rama actual como "name"
 
-Cada vez que cree:
+Cada vez que cree/modifique:
 (git add .) Solo si creo algo nuevo
 git commit -a -m "mensaje"
 git push
