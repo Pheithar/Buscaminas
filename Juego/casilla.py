@@ -1,6 +1,3 @@
-import pygame
-pygame.init()
-
 from configuration import Configuration
 
 class Cell():
@@ -17,7 +14,6 @@ class Cell():
         self.cord = cord
         self.type = "Cover"
         self.value = 0
-        self.rect = pygame.rect.Rect((self.cord[0], self.cord[1], self.config.CELL_SIZE[0], self.config.CELL_SIZE[1]))
 
     #Si es del tipo cubierto, y si recibe boton derecho, se cambia a bandera, si
     #es botón izquierdo, se cambia a descubierto y aparece el valor

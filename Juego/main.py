@@ -7,6 +7,9 @@ from configuration import Configuration
 from casilla import Cell
 from tablero import Board
 
+#Tiempo
+import time
+
 #VARIABLES
 
 config = Configuration()    #Clase con todas los valores numericos
@@ -22,6 +25,8 @@ board = Board(config.BOARD_SIZE, 0)
 
 
 end_game = False    #Variable para terminar el juego
+
+clicked = False     #Variable para saber si el jugador ha clickado o no
 
 fps_clock = pygame.time.Clock()     #Contador interno interno de PYGAME
 windows = pygame.display.set_mode(config.SCREEN_SIZE)
@@ -100,15 +105,13 @@ for i in range(0, len(img_file)):
         c_flag = pygame.transform.scale(c_flag, config.CELL_SIZE)
 
 #FIN DE LA CARGA DE IMAGENES
-
+"""
 #DIBUJAR EL TABLERO INICIAL
 for i in range(0, board.size[0]):
     for j in range(0, board.size[1]):
         board.cells[i][j].sprite = c_basic
         windows.blit(board.cells[i][j].sprite, board.cells[i][j].cord)
-
-        board.cells[i][j].sprite.rect = pygame.rect.Rect(board.cells[i][j].cord, config.CELL_SIZE)
-
+"""
 
 #COMIENZO BUCLE DEL JUEGO
 
@@ -119,7 +122,20 @@ while not end_game:
     #calculo de la posicion del raton en cada iteracion del bucle
     pos_mouse = pygame.mouse.get_pos()
     #Se obtiene que boton del raton esta siendo clickado en cada momento
-    l_click, m_click, r_click = pygame.mouse.get_pressed()
+    r_click, m_click, l_click = pygame.mouse.get_pressed()
+
+
+    #Evitar que se pueda clickear muy rapido
+    #Si no se ha clickeado, se cambia a clickeado, y si se ha clickeado,
+    #tiene que esperar 0,1s para poder volver a clickear
+    if (l_click or m_click or r_click) and not clicked:
+        clicked = True
+    elif (l_click or m_click or r_click) and clicked:
+        l_click = 0
+        m_click = 0
+        r_click = 0
+        time.sleep(0.1)
+        clicked = False
 
     for i in range(0, board.size[0]):
         for j in range(0, board.size[1]):
@@ -132,13 +148,24 @@ while not end_game:
             if board.cells[i][j].type == "Flag":
                 board.cells[i][j].sprite = c_flag
 
+            #CONDICIONES PARA COMPROBAR
+            b_cond_0 = pos_mouse[0]>=board.cells[i][j].cord[0]
+            b_cond_1 = pos_mouse[1]>=board.cells[i][j].cord[1]
+            x_cond = pos_mouse[0]<board.cells[i][j].cord[0]+config.CELL_SIZE[0]
+            y_cond = pos_mouse[1]<board.cells[i][j].cord[1]+config.CELL_SIZE[1]
+            #print(b_cond, x_cond, y_cond)
 
             #COMPROBAR SI ALGUNA CASILLA CAMBIA
             #Si el raton esta encima de una casilla y se aprieta l_click
-            if board.cells[i][j].sprite.get_rect().collidepoint(pos_mouse) and l_click:
+            #pos_mouse>=board.cells[i][j].cord[0]
+            if b_cond_0 and b_cond_1 and x_cond and y_cond and l_click:
                 board.cells[i][j].change_type("l_click")
+                print(board.cells[i][j].cord)
             if board.cells[i][j].sprite.get_rect().collidepoint(pos_mouse) and r_click:
                 board.cells[i][j].change_type("r_click")
+
+
+
 
             #PINTAR LAS CASILLAS
             windows.blit(board.cells[i][j].sprite, board.cells[i][j].cord)
