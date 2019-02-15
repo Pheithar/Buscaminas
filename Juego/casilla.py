@@ -1,15 +1,15 @@
 class Cell():
 
-    cord_x  #int
-    cord_y  #int
-    type    #String-> Cover, Uncover o Flag
-    value   #int
+    cord = int, int
+    type = str   #Cover, Uncover o Flag
+    value = int
+    sprite = str #image
 
 
-    def __init__(self, cord_x, cord_y):
-        self.cord_x = cord_x
-        self.cord_y = cord_y
+    def __init__(self, cord):
+        self.cord = cord
         type = "Cover"
+        value = 0
 
     #Si es del tipo cubierto, y si recibe boton derecho, se cambia a bandera, si
     #es botón izquierdo, se cambia a descubierto y aparece el valor
