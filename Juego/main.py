@@ -13,7 +13,7 @@ config = Configuration()    #Clase con todas los valores numericos
 
 #PRUEBA -------
 
-board = Board(5, 5, 0)
+board = Board(config.BOARD_SIZE, 0)
 
 #------
 
@@ -101,10 +101,51 @@ for i in range(0, len(img_file)):
 
 #FIN DE LA CARGA DE IMAGENES
 
+#DIBUJAR EL TABLERO INICIAL
+for i in range(0, board.size[0]):
+    for j in range(0, board.size[1]):
+        board.cells[i][j].sprite = c_basic
+        windows.blit(board.cells[i][j].sprite, board.cells[i][j].cord)
+
+        board.cells[i][j].sprite.rect = pygame.rect.Rect(board.cells[i][j].cord, config.CELL_SIZE)
+
+
 #COMIENZO BUCLE DEL JUEGO
 
 while not end_game:
     fps_clock.tick(30)  #FPS del juego(creo)
+
+
+    #calculo de la posicion del raton en cada iteracion del bucle
+    pos_mouse = pygame.mouse.get_pos()
+    #Se obtiene que boton del raton esta siendo clickado en cada momento
+    l_click, m_click, r_click = pygame.mouse.get_pressed()
+
+    for i in range(0, board.size[0]):
+        for j in range(0, board.size[1]):
+            #CAMBIAR LAS CASILLAS QUE LO REQUIEREN(Quiza hacer funcion??)
+            #TIENE QUE IR LO PRIMERO(Porque la primera vez inicializa)
+            if board.cells[i][j].type == "Cover":
+                board.cells[i][j].sprite = c_basic
+            if board.cells[i][j].type == "Uncover":
+                board.cells[i][j].sprite = c_0
+            if board.cells[i][j].type == "Flag":
+                board.cells[i][j].sprite = c_flag
+
+
+            #COMPROBAR SI ALGUNA CASILLA CAMBIA
+            #Si el raton esta encima de una casilla y se aprieta l_click
+            if board.cells[i][j].sprite.get_rect().collidepoint(pos_mouse) and l_click:
+                board.cells[i][j].change_type("l_click")
+            if board.cells[i][j].sprite.get_rect().collidepoint(pos_mouse) and r_click:
+                board.cells[i][j].change_type("r_click")
+
+            #PINTAR LAS CASILLAS
+            windows.blit(board.cells[i][j].sprite, board.cells[i][j].cord)
+
+
+
+
 
     #Obtener todos los eventos que puede obtener PYGAME
     #EJ:mover raton, pulsar tecla...
@@ -112,12 +153,6 @@ while not end_game:
         #Si se pulsa el boton X de la ventana, termina el bucle y el juego
         if event.type == pygame.QUIT:
             end_game = True
-
-
-    cell.sprite = c_0
-    windows.blit(cell.sprite, (0, 0))
-
-
 
 
     pygame.display.update()     #Actualizar la pantalla
