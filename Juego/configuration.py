@@ -1,7 +1,7 @@
 class Configuration():
-    CELL_SIZE = 32, 32
+    CELL_SIZE = 32, 15
 
-    BOARD_OFFSET = 0, 0
+    BOARD_OFFSET = 50, 150
     BOARD_SIZE = 10, 10
 
-    SCREEN_SIZE = 1000, 700
+    SCREEN_SIZE = 600, 700

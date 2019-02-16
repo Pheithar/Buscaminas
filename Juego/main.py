@@ -149,6 +149,7 @@ while not end_game:
                 board.cells[i][j].sprite = c_flag
 
             #CONDICIONES PARA COMPROBAR
+            #POR FIIIIIIIIN
             b_cond_0 = pos_mouse[0]>=board.cells[i][j].cord[0]
             b_cond_1 = pos_mouse[1]>=board.cells[i][j].cord[1]
             x_cond = pos_mouse[0]<board.cells[i][j].cord[0]+config.CELL_SIZE[0]
@@ -160,8 +161,8 @@ while not end_game:
             #pos_mouse>=board.cells[i][j].cord[0]
             if b_cond_0 and b_cond_1 and x_cond and y_cond and l_click:
                 board.cells[i][j].change_type("l_click")
-                print(board.cells[i][j].cord)
-            if board.cells[i][j].sprite.get_rect().collidepoint(pos_mouse) and r_click:
+                #print(board.cells[i][j].cord)
+            if b_cond_0 and b_cond_1 and x_cond and y_cond and r_click:
                 board.cells[i][j].change_type("r_click")
 
 

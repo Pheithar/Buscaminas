@@ -1,6 +1,8 @@
 from casilla import Cell
 from configuration import Configuration
 
+import random
+
 class Board:
 
     config = Configuration()
@@ -27,10 +29,18 @@ class Board:
 
             #Aumentar el offset en y(Las tuplas son inmutables, se requiere
             #de crear una nueva)
-            cord_offset = self.config.BOARD_OFFSET[0], cord_offset[1] + self.config.CELL_SIZE[0]
+            cord_offset = self.config.BOARD_OFFSET[0], cord_offset[1] + self.config.CELL_SIZE[1]
 
     #constructor de tablero
     def __init__(self, size, n_bombs):
         self.size = size    #Es una tupla de dos elementos
         self.n_bombs = n_bombs #se pone un número inicial de bombas al crear el tablero
         self.create_board()
+
+    #Al hacer el primer click, deben colocarse todas las bombas, y en
+    #consecuencia, darle valor a las casillas
+    #Con el numero de bombas, las coloca en posiciones aleatorias, y despues
+    #cambia los valores
+    def first_click(self, pos_cell):
+        for i in range(0, self.n_bombs):
+            r_num_x = random.randint(0, config.BOARD_SIZE)
