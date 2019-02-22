@@ -41,6 +41,14 @@ class Board:
     #consecuencia, darle valor a las casillas
     #Con el numero de bombas, las coloca en posiciones aleatorias, y despues
     #cambia los valores
-    def first_click(self, pos_cell):
-        for i in range(0, self.n_bombs):
-            r_num_x = random.randint(0, config.BOARD_SIZE)
+    def generate_board(self, pos_cell):
+        while self.n_bombs > 0:
+            #Calculo de un número aleatorio(uno para el eje x y otro para el y)
+            r_num_x = random.randint(0, config.BOARD_SIZE[0])
+            r_num_y = random.randint(0, config.BOARD_SIZE[1])
+
+            #Si el numero aleatorio coincide con la casilla clickeada o una
+            #menos o una mas en cada direccion, entonces se recalcula
+            if r_num_x <= pos_cell[0] - 1 and r_num_x >= pos_cell[0] + 1:
+                if r_num_y <= pos_cell[1] - 1 and r_num_y >= pos_cell[1] + 1:
+                    #SEGUIR AQUÍ

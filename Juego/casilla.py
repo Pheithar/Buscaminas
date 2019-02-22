@@ -15,20 +15,20 @@ class Cell():
         self.type = "Cover"
         self.value = 0
 
-    #Si es del tipo cubierto, y si recibe boton derecho, se cambia a bandera, si
-    #es botón izquierdo, se cambia a descubierto y aparece el valor
-    #Si es bandera, y recibe boron derecho, cambia a cubierto, y si recibe
-    #boton izquierdo, no hace nada
+    #Si es del tipo cubierto, y si recibe boton izquierdo, se cambia a bandera, si
+    #es botón derecho, se cambia a descubierto y aparece el valor
+    #Si es bandera, y recibe boron izquierdo, cambia a cubierto, y si recibe
+    #boton derecho, no hace nada
     #Si es descubierto, no hace nada de todas formas
     #Por parámetro debe recibir r_click para el botón derecho, y l_click para
     #el botón izquierdo
     def change_type(self, click):
         if self.type == "Cover":
             if click == "r_click":
-                self.type = "Flag"
-            elif click == "l_click":
                 self.type = "Uncover"
+            elif click == "l_click":
+                self.type = "Flag"
 
         elif self.type == "Flag":
-            if click == "r_click":
+            if click == "l_click":
                 self.type = "Cover"

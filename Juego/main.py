@@ -14,19 +14,14 @@ import time
 
 config = Configuration()    #Clase con todas los valores numericos
 
-#PRUEBA -------
 
-board = Board(config.BOARD_SIZE, 0)
-
-#------
-
-
-
+board = Board(config.BOARD_SIZE, config.BOMB_NUMBER)
 
 
 end_game = False    #Variable para terminar el juego
 
-clicked = False     #Variable para saber si el jugador ha clickado o no
+clicked = False     #Variable para saber si el jugador ha clickado alguna vez
+                    #o no. Sirve para calcular el tablero
 
 fps_clock = pygame.time.Clock()     #Contador interno interno de PYGAME
 windows = pygame.display.set_mode(config.SCREEN_SIZE)
@@ -105,13 +100,59 @@ for i in range(0, len(img_file)):
         c_flag = pygame.transform.scale(c_flag, config.CELL_SIZE)
 
 #FIN DE LA CARGA DE IMAGENES
-"""
-#DIBUJAR EL TABLERO INICIAL
-for i in range(0, board.size[0]):
-    for j in range(0, board.size[1]):
-        board.cells[i][j].sprite = c_basic
-        windows.blit(board.cells[i][j].sprite, board.cells[i][j].cord)
-"""
+
+#Carga de las imagenes en cada frame del juego
+
+
+#CAMBIAR LAS CASILLAS QUE LO REQUIEREN
+#TIENE QUE IR LO PRIMERO(Porque la primera vez inicializa)
+#Pone a cada casilla su sprite determinado dependeiendo de su valor "tipo"
+def change_cells(cell):
+    if cell.type == "Cover":
+        cell.sprite = c_basic
+    if cell.type == "Uncover":
+        cell.sprite = c_0
+    if cell.type == "Flag":
+        cell.sprite = c_flag
+
+
+#Comprueba si alguna casilla esta siendo pulsada usando 4 condiciones
+#que el raton este en una posicion mayor o igual en el eje x e y minimo
+#y que el raton no llegue hasta la siugueinte casilla en los mismos ejes
+#Si eso ocurre, detecta que click del raton está siendo llamado
+#y actua en consecuencia
+def cell_clicked(cell, l_click, r_click):
+    #CONDICIONES PARA COMPROBAR
+    b_cond_x = pos_mouse[0]>=cell.cord[0]
+    b_cond_y = pos_mouse[1]>=cell.cord[1]
+    x_cond = pos_mouse[0]<cell.cord[0]+config.CELL_SIZE[0]
+    y_cond = pos_mouse[1]<cell.cord[1]+config.CELL_SIZE[1]
+    #print(b_cond, x_cond, y_cond)
+
+    #COMPROBAR SI ALGUNA CASILLA CAMBIA
+    #Si el raton esta encima de una casilla y se aprieta l_click
+    #pos_mouse>=board.cells[i][j].cord[0]
+    if b_cond_x and b_cond_y and x_cond and y_cond and l_click:
+        cell.change_type("l_click")
+    if b_cond_x and b_cond_y and x_cond and y_cond and r_click:
+        cell.change_type("r_click")
+
+#copia parecida de cell_clicked, pero para cuando se hace cliuck por primera
+#vez, y se llama a la funcion generate_board del tablero(Solo vale para el
+#click derecho)
+def cell_first_clicked(cell):
+    #CONDICIONES PARA COMPROBAR
+    b_cond_x = pos_mouse[0]>=cell.cord[0]
+    b_cond_y = pos_mouse[1]>=cell.cord[1]
+    x_cond = pos_mouse[0]<cell.cord[0]+config.CELL_SIZE[0]
+    y_cond = pos_mouse[1]<cell.cord[1]+config.CELL_SIZE[1]
+
+    if b_cond_x and b_cond_y and x_cond and y_cond:
+        board.generate_board(cell.cord)
+        clicked = True
+
+
+
 
 #COMIENZO BUCLE DEL JUEGO
 
@@ -123,7 +164,6 @@ while not end_game:
     pos_mouse = pygame.mouse.get_pos()
     #Se obtiene que boton del raton esta siendo clickado en cada momento
     r_click, m_click, l_click = pygame.mouse.get_pressed()
-
 
     #Evitar que se pueda clickear muy rapido
     #Si no se ha clickeado, se cambia a clickeado, y si se ha clickeado,
@@ -139,40 +179,18 @@ while not end_game:
 
     for i in range(0, board.size[0]):
         for j in range(0, board.size[1]):
-            #CAMBIAR LAS CASILLAS QUE LO REQUIEREN(Quiza hacer funcion??)
-            #TIENE QUE IR LO PRIMERO(Porque la primera vez inicializa)
-            if board.cells[i][j].type == "Cover":
-                board.cells[i][j].sprite = c_basic
-            if board.cells[i][j].type == "Uncover":
-                board.cells[i][j].sprite = c_0
-            if board.cells[i][j].type == "Flag":
-                board.cells[i][j].sprite = c_flag
 
-            #CONDICIONES PARA COMPROBAR
-            #POR FIIIIIIIIN
-            b_cond_0 = pos_mouse[0]>=board.cells[i][j].cord[0]
-            b_cond_1 = pos_mouse[1]>=board.cells[i][j].cord[1]
-            x_cond = pos_mouse[0]<board.cells[i][j].cord[0]+config.CELL_SIZE[0]
-            y_cond = pos_mouse[1]<board.cells[i][j].cord[1]+config.CELL_SIZE[1]
-            #print(b_cond, x_cond, y_cond)
-
-            #COMPROBAR SI ALGUNA CASILLA CAMBIA
-            #Si el raton esta encima de una casilla y se aprieta l_click
-            #pos_mouse>=board.cells[i][j].cord[0]
-            if b_cond_0 and b_cond_1 and x_cond and y_cond and l_click:
-                board.cells[i][j].change_type("l_click")
-                #print(board.cells[i][j].cord)
-            if b_cond_0 and b_cond_1 and x_cond and y_cond and r_click:
-                board.cells[i][j].change_type("r_click")
+            #Primera vez que se clickea en el tablero
+            if not clicked and r_click:
+                cell_first_clicked(board.cells[i][j])
 
 
+            change_cells(board.cells[i][j])
 
+            cell_clicked(board.cells[i][j], l_click, r_click)
 
             #PINTAR LAS CASILLAS
             windows.blit(board.cells[i][j].sprite, board.cells[i][j].cord)
-
-
-
 
 
     #Obtener todos los eventos que puede obtener PYGAME
