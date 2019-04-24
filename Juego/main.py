@@ -137,7 +137,7 @@ def cell_clicked(cell, l_click, r_click):
     if b_cond_x and b_cond_y and x_cond and y_cond and r_click:
         cell.change_type("r_click")
 
-#copia parecida de cell_clicked, pero para cuando se hace cliuck por primera
+#copia parecida de cell_clicked, pero para cuando se hace click por primera
 #vez, y se llama a la funcion generate_board del tablero(Solo vale para el
 #click derecho)
 def cell_first_clicked(cell):
